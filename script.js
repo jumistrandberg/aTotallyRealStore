@@ -31,7 +31,7 @@ function displayOnSite(p) {
   // Get the img of the product and add to img element
   productImage.src = p.image;
   // Get the price and add to p element
-  productPrice.textContent = p.price;
+  productPrice.textContent = `$${p.price}`;
 
   // Add class for all cards
   productCard.classList.add("product-card");
