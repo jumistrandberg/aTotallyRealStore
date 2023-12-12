@@ -1,3 +1,18 @@
+/* Nav */
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav li a {
+    text-decoration: none;
+}
+
+/* Products  */
 #product-container {
     display: flex;
     flex-wrap: wrap;
