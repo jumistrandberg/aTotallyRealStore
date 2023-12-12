@@ -1,5 +1,20 @@
+#product-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid hotpink;
+    flex-direction: row;
+}
+
 .product-card {
-    height: 200px;
-    width: 200px;
     border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 25%;
+    align-items: center;
+    justify-content: ;
+
+}
+
+.product-card img {
+    max-width: 300px;
 }
