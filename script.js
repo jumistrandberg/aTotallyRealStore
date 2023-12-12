@@ -25,6 +25,8 @@ function displayOnSite(p) {
   const productImage = document.createElement("img");
   // Price of each product
   const productPrice = document.createElement("p");
+  // Add to cart button
+  const addToCart = document.createElement('button');
 
   // Get the name of the product and add to h2 element
   productName.textContent = p.title;
@@ -32,9 +34,13 @@ function displayOnSite(p) {
   productImage.src = p.image;
   // Get the price and add to p element
   productPrice.textContent = `$${p.price}`;
+  // Add text to add to cart button 
+  addToCart.innerText = 'Add to cart';
 
   // Add class for all cards
   productCard.classList.add("product-card");
+  // Add class to add to cart button 
+  addToCart.classList.add('cart-btn');
 
   // Append h2 to card div
   productCard.appendChild(productName);
@@ -42,6 +48,8 @@ function displayOnSite(p) {
   productCard.appendChild(productImage);
   // Append price to card 
   productCard.appendChild(productPrice);
+  // Append button to card 
+  productCard.appendChild(addToCart);
 
    // Append all cards to the container div 
    productContainer.appendChild(productCard);
