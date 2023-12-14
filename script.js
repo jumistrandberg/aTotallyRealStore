@@ -27,7 +27,7 @@ function displayOnSite(p) {
   // Price of each product
   const productPrice = document.createElement("p");
   // Add to cart button
-  const addToCart = document.createElement('button');
+  const addToCart = document.createElement("button");
 
   // Get the name of the product and add to h2 element
   productName.textContent = p.title;
@@ -35,79 +35,101 @@ function displayOnSite(p) {
   productImage.src = p.image;
   // Get the price and add to p element
   productPrice.textContent = `$${p.price}`;
-  // Add text to add to cart button 
-  addToCart.innerText = 'Add to cart';
+  // Add text to add to cart button
+  addToCart.innerText = "Add to cart";
 
   // Add class for all cards
   productCard.classList.add("product-card");
-  // Add class to add to cart button 
-  addToCart.classList.add('cart-btn');
+  // Add class to add to cart button
+  addToCart.classList.add("cart-btn");
 
   // Append h2 to card div
   productCard.appendChild(productName);
-  // Append img to card 
+  // Append img to card
   productCard.appendChild(productImage);
-  // Append price to card 
+  // Append price to card
   productCard.appendChild(productPrice);
-  // Append button to card 
+  // Append button to card
   productCard.appendChild(addToCart);
 
-   // Append all cards to the container div 
-   productContainer.appendChild(productCard);
+  // Append all cards to the container div
+  productContainer.appendChild(productCard);
 }
 
 function displayProducts() {
-    const productItems = products.map(displayOnSite);
+  const productItems = products.map(displayOnSite);
 }
 
-// Listen for clicks on category 
-const mensCat = document.getElementById('mens-cat');
-const womsCat = document.getElementById('woms-cat');
-const elecCat = document.getElementById('elec-cat');
-const jeweCat = document.getElementById('jewe-cat');
-const home = document.getElementById('home');
+// Get category links
+const mensCat = document.getElementById("mens-cat");
+const womsCat = document.getElementById("woms-cat");
+const elecCat = document.getElementById("elec-cat");
+const jeweCat = document.getElementById("jewe-cat");
+const home = document.getElementById("home");
 
-// Filter and display based on category 
+// Get cart
+const cart = document.getElementById("cart");
+
+// Filter and display based on category
 function filterAndDisplay(category) {
-  const filteredProducts = products.filter(product => product.category === category);
+  const filteredProducts = products.filter(
+    (product) => product.category === category
+  );
   // Clear products first
-  productContainer.innerHTML = '';
+  productContainer.innerHTML = "";
   // Display filtered results
-  filteredProducts.forEach(displayOnSite); 
+  filteredProducts.forEach(displayOnSite);
 }
 
 function displayAll(product) {
-  productContainer.innerHTML = '';
+  productContainer.innerHTML = "";
   products.forEach(displayOnSite);
 }
 
-// Call get products based on clicked category
+// Call get products based on click
 getProducts().then(() => {
-  mensCat.addEventListener('click', function(event) {
-    event.preventDefault(); 
+  // Listen for clicks on category links
+  mensCat.addEventListener("click", function (event) {
+    event.preventDefault();
     filterAndDisplay("men's clothing");
   });
-  
-  womsCat.addEventListener('click', function(event) {
-    event.preventDefault(); 
+
+  womsCat.addEventListener("click", function (event) {
+    event.preventDefault();
     filterAndDisplay("women's clothing");
   });
-  
-  elecCat.addEventListener('click', function(event) {
-    event.preventDefault(); 
+
+  elecCat.addEventListener("click", function (event) {
+    event.preventDefault();
     filterAndDisplay("electronics");
   });
-  
-  jeweCat.addEventListener('click', function(event) {
-    event.preventDefault(); 
+
+  jeweCat.addEventListener("click", function (event) {
+    event.preventDefault();
   });
 
-  home.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    displayAll()
-    console.log('home')
+  home.addEventListener("click", function (event) {
+    event.preventDefault();
+    displayAll();
+    console.log("home");
+  });
 
+  // Listen for clicks on cart
+
+  // Listen for click on cart
+  cart.addEventListener("click", function (event) {
+    event.preventDefault();
+    productContainer.innerHTML = "";
   });
 });
 
 
+// Create cart array
+let cartContent = [];
+
+// Each add to cart button listens for clicks
+addToCart.addEventListener("click", function (item) {
+  const itemToAdd = item.target.id;
+  console.log(itemToAdd);
+});
+// Add to cart array when add to cart button is clicked
