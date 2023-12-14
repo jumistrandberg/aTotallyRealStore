@@ -27,8 +27,16 @@ nav li a {
     flex: 1 0 21%;
     white-space: wrap;
     align-items: center;
+    justify-content: center;
+    padding: 5%;
+
+
 }
 
 .product-card img {
     max-width: 300px;
+}
+
+.cart-btn {
+    
 }
