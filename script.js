@@ -65,6 +65,7 @@ const mensCat = document.getElementById('mens-cat');
 const womsCat = document.getElementById('woms-cat');
 const elecCat = document.getElementById('elec-cat');
 const jeweCat = document.getElementById('jewe-cat');
+const home = document.getElementById('home');
 
 // Filter and display based on category 
 function filterAndDisplay(category) {
@@ -73,6 +74,11 @@ function filterAndDisplay(category) {
   productContainer.innerHTML = '';
   // Display filtered results
   filteredProducts.forEach(displayOnSite); 
+}
+
+function displayAll(product) {
+  productContainer.innerHTML = '';
+  products.forEach(displayOnSite);
 }
 
 // Call get products based on clicked category
@@ -95,6 +101,13 @@ getProducts().then(() => {
   jeweCat.addEventListener('click', function(event) {
     event.preventDefault(); 
   });
-})
+
+  home.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    displayAll()
+    console.log('home')
+
+  });
+});
 
 
