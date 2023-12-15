@@ -35,8 +35,11 @@ function displayOnSite(p) {
   productImage.src = p.image;
   // Get the price and add to p element
   productPrice.textContent = `$${p.price}`;
+
   // Add text to add to cart button
   addToCart.innerText = "Add to cart";
+  // Add class to add to cart button
+  addToCart.classList.add("addToCart");
 
   // Add class for all cards
   productCard.classList.add("product-card");
@@ -58,6 +61,8 @@ function displayOnSite(p) {
 
 function displayProducts() {
   const productItems = products.map(displayOnSite);
+  // Add event listeners to add to cart button after the buttons have been created.
+  addToCartListeners();
 }
 
 // Get category links
@@ -114,8 +119,6 @@ getProducts().then(() => {
     console.log("home");
   });
 
-  // Listen for clicks on cart
-
   // Listen for click on cart
   cart.addEventListener("click", function (event) {
     event.preventDefault();
@@ -124,12 +127,14 @@ getProducts().then(() => {
 });
 
 
-// Create cart array
-let cartContent = [];
 
-// Each add to cart button listens for clicks
-addToCart.addEventListener("click", function (item) {
-  const itemToAdd = item.target.id;
-  console.log(itemToAdd);
-});
-// Add to cart array when add to cart button is clicked
+function addToCartListeners() {
+  // Get all the add to cart buttons
+  const addToCartButtons = document.querySelectorAll(".addToCart");
+  addToCartButtons.forEach((addToCartButton) => {
+    addToCartButton.addEventListener("click", function (e) {
+      const itemToAdd = e.target;
+      console.log(itemToAdd);
+    });
+  });
+}
